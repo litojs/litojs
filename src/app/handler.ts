@@ -1,6 +1,7 @@
 import { createContext } from "@/helper/context/context-creator";
 import { routeCreator } from "@/helper/route/route-creator";
 import { Logger } from "@/helper/utils/logger";
+import type { Context } from "@/types";
 import type { Handler, Method } from "@/types/handler";
 
 import type { Lito } from "./lito";
@@ -15,22 +16,23 @@ export class LitoHandler {
     // ? ------------------------------------------------------------
     // ? Handler Methods --------------------------------------------
     // ? ------------------------------------------------------------
-    private handleResponse(response: unknown): Response {
+    private handleResponse(response: unknown, context: Context): Response {
         if (response instanceof Response) {
             return response;
         }
 
         if (typeof response === "object") {
             return new Response(JSON.stringify(response), {
+                status: context.status,
                 headers: { "Content-Type": "application/json" },
             });
         }
 
         if (typeof response === "string") {
-            return new Response(response);
+            return new Response(response, { status: context.status });
         }
 
-        return new Response(String(response));
+        return new Response(String(response), { status: context.status });
     }
 
     // ? ------------------------------------------------------------
@@ -57,13 +59,13 @@ export class LitoHandler {
             // ? Log request
             // ? This is standard information logging
             Logger.log(
-                `INFO: [${request.method}] ${
+                `INFO: [${request.method}]:[${context.status}] ${
                     context.path
-                } - ${elapsedTime.toFixed(3)}ms`
+                } - Time: ${elapsedTime.toFixed(3)}ms`
             );
             // ? --------------------------------------------------------
 
-            return this.handleResponse(response);
+            return this.handleResponse(response, context);
         }
 
         // Return 404 if no route is found

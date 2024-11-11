@@ -19,6 +19,7 @@ export function createContext(request: Request, routes: Route[]) {
         headers: request.headers,
         url: request.url,
         path: pathname,
+        status: 200,
         cookies: cookieParser(request.headers.get("cookie") || ""),
         query,
     };

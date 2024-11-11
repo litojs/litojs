@@ -1,4 +1,8 @@
 import { importApp } from "@/helper/app/app-importer";
+import {
+    checkForRouteConflicts,
+    suggestPrefixForConflicts,
+} from "@/helper/route/route-checker";
 import { Logger } from "@/helper/utils/logger";
 import type { Configuration } from "@/types/config";
 import type { Route } from "@/types/route";
@@ -20,6 +24,13 @@ export async function App(configuration: Configuration): Promise<void> {
         if (appRoutes) {
             routes.push(...appRoutes);
         }
+    }
+
+    const conflicts = checkForRouteConflicts(routes);
+    const conflictMessage = suggestPrefixForConflicts(conflicts);
+
+    if (conflictMessage) {
+        Logger.warn(conflictMessage);
     }
 
     return new Lito(configuration).use(routes).listen(port, () => {

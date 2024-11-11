@@ -28,6 +28,7 @@ It's an opinionated fullstack framework built on top of Bun.js inspired by larav
 -   [x] PUT handler
 -   [x] PATCH handler
 -   [x] DELETE handler
+-   [x] Response Status
 -   [x] Request Context
 -   [x] Request Body
 -   [x] Request Params

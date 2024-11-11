@@ -5,6 +5,7 @@ export interface Context {
     params: Record<string, string>;
     headers: Headers;
     path: string;
+    status: number;
     cookies: Record<string, Cookie>;
     url: Request["url"];
     query: Record<string, string>;
