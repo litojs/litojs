@@ -17,6 +17,8 @@ export class LitoHandler {
     // ? Handler Methods --------------------------------------------
     // ? ------------------------------------------------------------
     private handleResponse(response: unknown, context: Context): Response {
+        console.log(typeof response);
+
         if (response instanceof Response) {
             return response;
         }

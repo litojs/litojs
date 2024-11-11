@@ -6,7 +6,8 @@ export type Response =
     | ResponseInit
     | Promise<ResponseInit>
     | Record<string, unknown>
-    | string;
+    | string
+    | unknown[];
 
 export type ReturnHandler =
     | Response
