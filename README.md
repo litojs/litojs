@@ -1,7 +1,6 @@
 # Litojs
 
-It's fullstack framework built on top of Bun.js.
-The main goal of this project is to provide a pragmaticfullstack framework that is easy to use.
+It's an opinionated fullstack framework built on top of Bun.js inspired by laravel and django. The main goal of this project is to provide a pragmaticfullstack framework that is easy to use.
 
 > [!Caution]
 > This project is still in development and is not ready for production use.
