@@ -1,4 +1,6 @@
-import type { Handler, Method, Route } from "../types/handler";
+import type { Route } from "@/types";
+
+import type { Handler, Method } from "../types/handler";
 
 const createRoute =
     (routes: Route[], method: Method) => (path: string, handler: Handler) => {

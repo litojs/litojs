@@ -1,4 +1,4 @@
-export type StatusCategory =
+export type StatusType =
     | "success"
     | "redirect"
     | "clientError"
