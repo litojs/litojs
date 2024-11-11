@@ -17,8 +17,6 @@ export class LitoHandler {
     // ? Handler Methods --------------------------------------------
     // ? ------------------------------------------------------------
     private handleResponse(response: unknown, context: Context): Response {
-        console.log(typeof response);
-
         if (response instanceof Response) {
             return response;
         }
@@ -40,7 +38,7 @@ export class LitoHandler {
     // ? ------------------------------------------------------------
     // ? Public Methods ---------------------------------------------
     // ? ------------------------------------------------------------
-    public handleRequest(request: Request) {
+    public async handleRequest(request: Request) {
         const { route, context } = createContext(request, this.lito.routes);
 
         if (route) {
@@ -48,7 +46,7 @@ export class LitoHandler {
             let response;
 
             try {
-                response = route.handler(context);
+                response = await route.handler(context);
             } catch (error) {
                 const err = error as Error;
                 return new Response(err.message, { status: 500 });
