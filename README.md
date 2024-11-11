@@ -35,6 +35,7 @@ Project Litojs maintained by indrazm.
 -   [x] Request Headers
 -   [x] Request Cookies
 -   [ ] Request Query
+-   [ ] Cookie Setter
 -   [ ] Validation
 -   [ ] Middleware
 -   [ ] Authentication
