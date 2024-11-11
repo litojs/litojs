@@ -58,7 +58,7 @@ export class LitoHandler {
             // ? This is standard information logging
             Logger.log(
                 `INFO: [${request.method}] ${
-                    request.url
+                    context.path
                 } - ${elapsedTime.toFixed(3)}ms`
             );
             // ? --------------------------------------------------------
