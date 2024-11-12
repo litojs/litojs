@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 import { Logger } from "@/helper/utils/logger";
 import type { Context, ReturnHandler } from "@/types";
 import type { BaseController, ControllerMethod } from "@/types/controller";
@@ -24,8 +26,13 @@ export class ControllerHandler {
     private getMethod<T extends Controller<Context>>(methodName: keyof T): ControllerMethod<Context> {
         const method = this.controllerInstance[methodName as string];
         if (typeof method !== "function") {
-            Logger.error(`Method ${String(methodName)} does not exist on controller`);
-            process.exit(1);
+            Logger.error(
+                `Method "${chalk.underline(
+                    chalk.italic(String(methodName))
+                )}" does not exist on controller ${chalk.underline(
+                    chalk.italic(String(this.controllerInstance.constructor.name))
+                )}`
+            );
         }
         return method;
     }
