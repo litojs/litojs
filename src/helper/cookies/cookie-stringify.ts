@@ -1,13 +1,7 @@
 import type { CookieOptions } from "@/types";
 
-export function cookieStringify(
-    key: string,
-    value: string,
-    options: CookieOptions = {}
-): string {
-    let cookieString = `${encodeURIComponent(key)}=${encodeURIComponent(
-        value
-    )}`;
+export function cookieStringify(key: string, value: string, options: CookieOptions = {}): string {
+    let cookieString = `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
 
     if (options.maxAge !== undefined) {
         cookieString += `; Max-Age=${options.maxAge}`;

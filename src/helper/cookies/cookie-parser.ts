@@ -18,9 +18,7 @@ export function cookieParser(cookieString: string): Record<string, Cookie> {
             };
 
             attributes.forEach((attribute) => {
-                const [attrName, attrValue] = attribute
-                    .split("=")
-                    .map((item) => item.trim().toLowerCase());
+                const [attrName, attrValue] = attribute.split("=").map((item) => item.trim().toLowerCase());
                 switch (attrName) {
                     case "httponly":
                         cookie.httpOnly = true;
@@ -38,10 +36,7 @@ export function cookieParser(cookieString: string): Record<string, Cookie> {
                         cookie.expires = new Date(attrValue);
                         break;
                     case "samesite":
-                        cookie.sameSite = attrValue as
-                            | "Strict"
-                            | "Lax"
-                            | "None";
+                        cookie.sameSite = attrValue as "Strict" | "Lax" | "None";
                         break;
                 }
             });

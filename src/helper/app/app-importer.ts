@@ -11,9 +11,7 @@ export async function importApp(app: string) {
         try {
             await fs.access(routerPath);
         } catch {
-            Logger.warn(
-                `You are registering an app that does not have router.ts`
-            );
+            Logger.warn(`You are registering an app that does not have router.ts`);
             return;
         }
 

@@ -1,6 +1,1 @@
-export type StatusType =
-    | "success"
-    | "redirect"
-    | "clientError"
-    | "serverError"
-    | "unknown";
+export type StatusType = "success" | "redirect" | "clientError" | "serverError" | "unknown";

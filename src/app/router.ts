@@ -2,27 +2,40 @@ import type { Route } from "@/types";
 
 import type { Handler, Method } from "../types/handler";
 
-const createRoute =
-    (routes: Route[], method: Method) => (path: string, handler: Handler) => {
-        routes.push({
-            method,
-            path,
-            handler,
-        });
-    };
+export class Router {
+    private routes: Route[] = [];
 
-export function Router() {
-    const routes: Route[] = [];
+    private createRoute(method: Method) {
+        return (path: string, handler: Handler) => {
+            this.routes.push({
+                method,
+                path,
+                handler,
+            });
+        };
+    }
 
-    return {
-        get: createRoute(routes, "GET"),
-        post: createRoute(routes, "POST"),
-        put: createRoute(routes, "PUT"),
-        patch: createRoute(routes, "PATCH"),
-        delete: createRoute(routes, "DELETE"),
+    public get(path: string, handler: Handler) {
+        return this.createRoute("GET")(path, handler);
+    }
 
-        $routes: () => {
-            return routes;
-        },
-    };
+    public post(path: string, handler: Handler) {
+        return this.createRoute("POST")(path, handler);
+    }
+
+    public put(path: string, handler: Handler) {
+        return this.createRoute("PUT")(path, handler);
+    }
+
+    public patch(path: string, handler: Handler) {
+        return this.createRoute("PATCH")(path, handler);
+    }
+
+    public delete(path: string, handler: Handler) {
+        return this.createRoute("DELETE")(path, handler);
+    }
+
+    public getRoutes(): Route[] {
+        return this.routes;
+    }
 }
