@@ -4,7 +4,8 @@
     "main": "src/index.ts",
     "type": "module",
     "exports": {
-        ".": "./src/index.ts"
+        ".": "./dist/index.ts",
+        "./views": "./dist/views/index.ts"
     },
     "scripts": {
         "lint": "bunx eslint ./src"
@@ -21,6 +22,8 @@
         "typescript": "^5.6.3"
     },
     "dependencies": {
+        "@kitajs/html": "^4.2.4",
+        "@kitajs/ts-html-plugin": "^4.1.0",
         "chalk": "^5.3.0"
     }
 }
