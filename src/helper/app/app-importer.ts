@@ -18,8 +18,8 @@ export async function importApp(app: string) {
         const module = await import(routerPath);
 
         for (const key in module) {
-            if (module[key]?.$routes()) {
-                return module[key].$routes();
+            if (module[key]?.getRoutes()) {
+                return module[key].getRoutes();
             }
         }
     } catch (error) {

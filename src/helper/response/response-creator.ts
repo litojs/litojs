@@ -10,6 +10,7 @@ export function createResponse(response: unknown, context: Context, setCookies: 
             status: context.status,
         });
     } else if (typeof response === "string") {
+        headers.set("Content-Type", "text/plain");
         response = new Response(response, { status: context.status });
     } else {
         response = new Response(String(response), {
