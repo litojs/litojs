@@ -44,3 +44,5 @@ It's an opinionated fullstack framework built on top of Bun.js inspired by larav
 -   [ ] Email
 -   [ ] Websockets
 -   [ ] ORM
+-   [ ] Project Test
+-   [ ] Documentation
