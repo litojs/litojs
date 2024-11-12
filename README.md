@@ -34,8 +34,8 @@ It's an opinionated fullstack framework built on top of Bun.js inspired by larav
 -   [x] Request Params
 -   [x] Request Headers
 -   [x] Request Cookies
--   [ ] Request Query
--   [ ] Cookie Setter
+-   [x] Request Query
+-   [x] Cookie Setter
 -   [ ] Validation
 -   [ ] Middleware
 -   [ ] Authentication

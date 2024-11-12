@@ -1,4 +1,5 @@
 import { createContext } from "@/helper/context/context-creator";
+import { createResponse } from "@/helper/response/response-creator";
 import { routeCreator } from "@/helper/route/route-creator";
 import { Logger } from "@/helper/utils/logger";
 import type { Context } from "@/types";
@@ -16,30 +17,15 @@ export class LitoHandler {
     // ? ------------------------------------------------------------
     // ? Handler Methods --------------------------------------------
     // ? ------------------------------------------------------------
-    private handleResponse(response: unknown, context: Context): Response {
-        if (response instanceof Response) {
-            return response;
-        }
-
-        if (typeof response === "object") {
-            return new Response(JSON.stringify(response), {
-                status: context.status,
-                headers: { "Content-Type": "application/json" },
-            });
-        }
-
-        if (typeof response === "string") {
-            return new Response(response, { status: context.status });
-        }
-
-        return new Response(String(response), { status: context.status });
+    private handleResponse(response: unknown, context: Context, setCookies: string[]): Response {
+        return createResponse(response, context, setCookies);
     }
 
     // ? ------------------------------------------------------------
     // ? Public Methods ---------------------------------------------
     // ? ------------------------------------------------------------
     public async handleRequest(request: Request) {
-        const { route, context } = createContext(request, this.lito.routes);
+        const { route, context, setCookies } = createContext(request, this.lito.routes);
 
         if (route) {
             const startTimer = process.hrtime();
@@ -59,13 +45,11 @@ export class LitoHandler {
             // ? Log request
             // ? This is standard information logging
             Logger.log(
-                `INFO: [${request.method}]:[${context.status}] ${
-                    context.path
-                } - Time: ${elapsedTime.toFixed(3)}ms`
+                `INFO: [${request.method}]:[${context.status}] ${context.path} - Time: ${elapsedTime.toFixed(3)}ms`
             );
             // ? --------------------------------------------------------
 
-            return this.handleResponse(response, context);
+            return this.handleResponse(response, context, setCookies);
         }
 
         // Return 404 if no route is found

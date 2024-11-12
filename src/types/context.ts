@@ -1,4 +1,4 @@
-import type { Cookie } from "./cookie";
+import type { Cookie, CookieOptions } from "./cookie";
 
 export interface Context {
     user: Record<string, unknown> | null;
@@ -7,6 +7,11 @@ export interface Context {
     path: string;
     status: number;
     cookies: Record<string, Cookie>;
+    cookie: {
+        get: (key: string) => Cookie | undefined;
+        set: (key: string, value: string, options?: CookieOptions) => void;
+        delete: (key: string) => void;
+    };
     url: Request["url"];
     query: Record<string, string>;
 }
