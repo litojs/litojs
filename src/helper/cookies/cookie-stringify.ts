@@ -1,4 +1,4 @@
-import type { CookieOptions } from "@/types";
+import type { CookieOptions } from "../../types";
 
 export function cookieStringify(key: string, value: string, options: CookieOptions = {}): string {
     let cookieString = `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;

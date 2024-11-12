@@ -1,9 +1,8 @@
-import { importApp } from "@/helper/app/app-importer";
-import { checkForRouteConflicts, suggestPrefixForConflicts } from "@/helper/route/route-checker";
-import { Logger } from "@/helper/utils/logger";
-import type { Configuration } from "@/types/config";
-import type { Route } from "@/types/route";
-
+import { importApp } from "../helper/app/app-importer";
+import { checkForRouteConflicts, suggestPrefixForConflicts } from "../helper/route/route-checker";
+import { Logger } from "../helper/utils/logger";
+import type { Configuration } from "../types/config";
+import type { Route } from "../types/route";
 import { Lito } from "./lito";
 
 /**

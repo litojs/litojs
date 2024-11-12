@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-import type { LitoError } from "@/types/error";
+import type { LitoError } from "../../types/error";
 
 export class Logger {
     static log(message: string, error?: LitoError) {

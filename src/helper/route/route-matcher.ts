@@ -1,5 +1,4 @@
-import type { Route } from "@/types";
-
+import type { Route } from "../../types";
 import { routeMatch } from "./route-match";
 import { routeNormalizer } from "./route-normalizer";
 

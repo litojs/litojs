@@ -1,9 +1,8 @@
 import chalk from "chalk";
 
-import { Logger } from "@/helper/utils/logger";
-import type { Context, ReturnHandler } from "@/types";
-import type { BaseController, ControllerMethod } from "@/types/controller";
-
+import { Logger } from "../helper/utils/logger";
+import type { Context, ReturnHandler } from "../types";
+import type { BaseController, ControllerMethod } from "../types/controller";
 import type { Router } from "./router";
 
 export abstract class Controller<T = Context> implements BaseController<T> {

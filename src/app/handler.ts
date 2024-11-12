@@ -1,10 +1,9 @@
-import { createContext } from "@/helper/context/context-creator";
-import { createResponse } from "@/helper/response/response-creator";
-import { routeCreator } from "@/helper/route/route-creator";
-import { Logger } from "@/helper/utils/logger";
-import type { Context } from "@/types";
-import type { Handler, Method } from "@/types/handler";
-
+import { createContext } from "../helper/context/context-creator";
+import { createResponse } from "../helper/response/response-creator";
+import { routeCreator } from "../helper/route/route-creator";
+import { Logger } from "../helper/utils/logger";
+import type { Context } from "../types";
+import type { Handler, Method } from "../types/handler";
 import type { Lito } from "./lito";
 
 export class LitoHandler {
@@ -26,9 +25,9 @@ export class LitoHandler {
     // ? ------------------------------------------------------------
     public async handleRequest(request: Request) {
         const { route, context, setCookies } = createContext(request, this.lito.routes);
+        const startTimer = process.hrtime();
 
         if (route) {
-            const startTimer = process.hrtime();
             let response;
 
             try {
@@ -39,7 +38,7 @@ export class LitoHandler {
             }
 
             const endTimer = process.hrtime(startTimer);
-            const elapsedTime = (endTimer[0] * 1e9 + endTimer[1]) / 1e6; // Convert to milliseconds
+            const elapsedTime = (endTimer[0] * 1e9 + endTimer[1]) / 1e6;
 
             // ? --------------------------------------------------------
             // ? Log request
@@ -52,8 +51,11 @@ export class LitoHandler {
             return this.handleResponse(response, context, setCookies);
         }
 
-        // Return 404 if no route is found
-        return new Response("Not Found", { status: 404 });
+        const endTimer = process.hrtime(startTimer);
+        const elapsedTime = (endTimer[0] * 1e9 + endTimer[1]) / 1e6;
+        Logger.warn(`WARN: [${request.method}]:[404] ${context.path} - Time: ${elapsedTime.toFixed(3)}ms`);
+
+        return new Response("Route not found", { status: 404 });
     }
 
     public addRoute(method: Method, path: string, handler: Handler) {

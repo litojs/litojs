@@ -1,5 +1,4 @@
-import type { Route } from "@/types";
-
+import type { Route } from "../types";
 import type { Configuration } from "../types/config";
 import type { Handler, Method } from "../types/handler";
 import { LitoHandler } from "./handler";

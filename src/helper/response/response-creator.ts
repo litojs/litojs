@@ -1,4 +1,4 @@
-import type { Context } from "@/types/context";
+import type { Context } from "../../types/context";
 
 export function createResponse(response: unknown, context: Context, setCookies: string[]): Response {
     const headers = new Headers();

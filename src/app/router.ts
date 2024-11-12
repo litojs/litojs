@@ -1,14 +1,19 @@
-import type { Route } from "@/types";
-
+import type { Route, RouterConfig } from "../types";
 import type { Handler, Method } from "../types/handler";
 import { Controller, ControllerHandler } from "./controller";
 
 export class Router {
     private routes: Route[] = [];
     public controllerHandler: ControllerHandler;
+    private prefix: string;
 
-    constructor() {
+    constructor(config?: RouterConfig) {
         this.controllerHandler = new ControllerHandler(this);
+        if (config !== undefined && config.prefix !== undefined) {
+            this.prefix = config.prefix;
+        } else {
+            this.prefix = "";
+        }
     }
 
     private createRoute(method: Method) {
