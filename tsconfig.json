@@ -19,5 +19,5 @@
         "noUnusedParameters": false,
         "noPropertyAccessFromIndexSignature": false
     },
-    "include": ["src/**/*", "dist/views", "dist/index.ts"]
+    "include": ["src/**/*", "dist/views", "src/index.ts"]
 }
