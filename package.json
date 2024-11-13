@@ -12,7 +12,7 @@
     },
     "scripts": {
         "lint": "bunx eslint ./src",
-        "build": "bun build ./src/**/*.ts --target=bun --outdir=dist"
+        "build": "bun run bin/build.ts"
     },
     "devDependencies": {
         "@eslint/js": "^9.14.0",
