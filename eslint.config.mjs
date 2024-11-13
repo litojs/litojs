@@ -11,5 +11,5 @@ export default tseslint.config(eslint.configs.recommended, ...tseslint.configs.r
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
     },
-    ignores: ["./node_modules/**/*", "dist/**/*"],
+    ignores: ["node_modules", "dist"],
 });

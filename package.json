@@ -4,12 +4,15 @@
     "main": "src/index.ts",
     "type": "module",
     "exports": {
-        ".": "./dist/index.ts",
-        "./views": "./dist/views/index.ts"
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.js"
+        }
     },
     "scripts": {
         "lint": "bunx eslint ./src",
-        "build": "rm -rf dist && bun run bin/build.ts"
+        "build": "bun build ./src/**/*.ts --target=bun --outdir=dist"
     },
     "devDependencies": {
         "@eslint/js": "^9.14.0",
