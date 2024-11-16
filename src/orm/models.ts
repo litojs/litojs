@@ -1,4 +1,4 @@
-import { Field } from "./fields";
+import { FieldFactory, type FieldFactoryMethods } from "./field-factory";
 import { Query } from "./queries";
 
 export class Models<T extends object> {
@@ -6,9 +6,9 @@ export class Models<T extends object> {
     private _fields: T;
     public query: Query<T>;
 
-    constructor(name: string, fields: (col: Field) => T) {
+    constructor(name: string, fields: (col: FieldFactoryMethods) => T) {
         this._name = name;
-        this._fields = fields(new Field());
+        this._fields = fields(FieldFactory);
         this.query = new Query(name);
     }
 
@@ -16,12 +16,3 @@ export class Models<T extends object> {
         return this._fields;
     }
 }
-
-export const note = new Models("note", (col) => ({
-    id: col.integer().primaryKey(),
-    title: col.text().notNull(),
-    content: col.text().notNull(),
-    isDone: col.boolean().default(false),
-}));
-
-console.log(note.fields.id);
