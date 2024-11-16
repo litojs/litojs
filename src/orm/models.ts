@@ -18,9 +18,10 @@ export class Models<T extends object> {
 }
 
 export const note = new Models("note", (col) => ({
+    id: col.integer().primaryKey(),
     title: col.text().notNull(),
     content: col.text().notNull(),
     isDone: col.boolean().default(false),
 }));
 
-console.log(note.query.insert({ title: "Hello!" }));
+console.log(note.fields.id);
