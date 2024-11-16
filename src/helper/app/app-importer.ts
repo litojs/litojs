@@ -7,7 +7,6 @@ export async function importApp(app: string) {
     try {
         const routerPath = path.join(process.cwd(), "apps", app, "router.ts");
 
-        // Check if the router.ts file exists
         try {
             await fs.access(routerPath);
         } catch {
