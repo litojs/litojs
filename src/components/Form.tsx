@@ -3,7 +3,7 @@ interface FormProps {
     method: "POST" | "PUT" | "DELETE" | "PATCH";
     target: string;
     url: string;
-    children: JSX.Element;
+    children: JSX.Element | JSX.Element[];
 }
 
 const getHxSwapValue = (responseBehavior?: string) => {

@@ -1,5 +1,12 @@
 {
     "name": "litojs",
+    "description": "A pragmatic fullstack framework for building modern web applications",
+    "author": {
+        "name": "indrazm",
+        "url": "https://github/indrazm",
+        "email": "me@indrazm.com"
+    },
+    "license": "MIT",
     "version": "0.0.1",
     "main": "dist/index.js",
     "files": [
