@@ -16,6 +16,11 @@
             "types": "./dist/renderer/index.d.ts",
             "import": "./dist/renderer/index.js",
             "require": "./dist/renderer/index.js"
+        },
+        "./components": {
+            "types": "./dist/components/index.d.ts",
+            "import": "./dist/components/index.js",
+            "require": "./dist/components/index.js"
         }
     },
     "scripts": {

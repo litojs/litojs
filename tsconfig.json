@@ -10,7 +10,6 @@
         "moduleDetection": "force",
         "jsx": "react-jsx",
         "jsxImportSource": "@kitajs/html",
-        "plugins": [{ "name": "@kitajs/ts-html-plugin" }],
         "allowJs": true,
         "moduleResolution": "Node",
         "allowImportingTsExtensions": true,
@@ -21,7 +20,8 @@
         "noUnusedLocals": false,
         "noUnusedParameters": false,
         "noPropertyAccessFromIndexSignature": false,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "types": ["@kitajs/html/htmx.d.ts", "bun"]
     },
     "include": ["src/**/*", "dist/views", "src/index.ts"]
 }
