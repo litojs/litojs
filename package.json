@@ -19,10 +19,10 @@
             "import": "./dist/index.js",
             "require": "./dist/index.js"
         },
-        "./renderer": {
-            "types": "./dist/renderer/index.d.ts",
-            "import": "./dist/renderer/index.js",
-            "require": "./dist/renderer/index.js"
+        "./utils": {
+            "types": "./dist/utils/index.d.ts",
+            "import": "./dist/utils/index.js",
+            "require": "./dist/utils/index.js"
         },
         "./components": {
             "types": "./dist/components/index.d.ts",
