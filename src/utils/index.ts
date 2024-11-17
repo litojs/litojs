@@ -1,24 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import path from "path";
+
+import { Logger } from "../helper/utils/logger";
 import type { PropsType } from "../types/common";
 
 export async function view<T extends (props: any) => any>(component: T, props: PropsType<T>): Promise<Response> {
-    const htmlWrapper = (content: string) => `
-        <!DOCTYPE html>
-        <html lang="en">
-            <head>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <script src="//unpkg.com/alpinejs" defer></script>
-                <script src="https://unpkg.com/htmx.org@2.0.3"></script>
-            </head>
-            <body>
-                ${content}
-            </body>
-        </html>
-    `;
+    const routerPath = path.join(process.cwd(), "index.html");
+    const file = Bun.file(routerPath);
 
+    if (!file.exists()) {
+        Logger.error(`Please create an index.html file in the root of your project`);
+    }
+
+    // ! NEEDS TO BE FIXED
+    const wrapper = await file.text();
     const html = component(props).toString();
-    return new Response(htmlWrapper(html), {
+    const finalWrapper = wrapper.replace("<body></body>", `<body>${html}</body>`);
+    console.log(finalWrapper);
+
+    return new Response(finalWrapper, {
         headers: {
             "content-type": "text/html; charset=UTF-8",
         },

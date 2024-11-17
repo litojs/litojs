@@ -38,6 +38,8 @@ Info: https://lito.indrazm.com/
 -   [x] Cookie Setter
 -   [x] JSX Renderer
 -   [x] Redirection
+-   [-] Documentation
+-   [-] ORM
 -   [ ] Validation
 -   [ ] Middleware
 -   [ ] Authentication
@@ -45,6 +47,4 @@ Info: https://lito.indrazm.com/
 -   [ ] File Uploads
 -   [ ] Email
 -   [ ] Websockets
--   [-] ORM
 -   [ ] Project Test
--   [-] Documentation
