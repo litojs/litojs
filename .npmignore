@@ -1,6 +1,5 @@
 src
 .husky
-.bin
 .git
 .gitignore
 .github

@@ -21,9 +21,9 @@ export async function App(configuration: Configuration): Promise<void> {
         if (appRoutes) {
             routes.push(...appRoutes);
         }
-
-        importPublic(routes);
     }
+
+    importPublic(routes);
 
     const conflicts = checkForRouteConflicts(routes);
     const conflictMessage = suggestPrefixForConflicts(conflicts);
