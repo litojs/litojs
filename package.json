@@ -41,7 +41,8 @@
         "@types/eslint__js": "^8.42.3",
         "eslint": "^9.14.0",
         "eslint-plugin-simple-import-sort": "^12.1.1",
-        "typescript-eslint": "^8.13.0"
+        "typescript-eslint": "^8.13.0",
+        "tsup": "^8.3.5"
     },
     "peerDependencies": {
         "typescript": "^5.6.3"
@@ -49,7 +50,6 @@
     "dependencies": {
         "@kitajs/html": "^4.2.4",
         "@kitajs/ts-html-plugin": "^4.1.0",
-        "chalk": "^5.3.0",
-        "tsup": "^8.3.5"
+        "chalk": "^5.3.0"
     }
 }
