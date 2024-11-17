@@ -1,4 +1,5 @@
 import { importApp } from "../helper/app/app-importer";
+import { importPublic } from "../helper/app/public-importer";
 import { checkForRouteConflicts, suggestPrefixForConflicts } from "../helper/route/route-checker";
 import { Logger } from "../helper/utils/logger";
 import type { Configuration } from "../types/config";
@@ -20,6 +21,8 @@ export async function App(configuration: Configuration): Promise<void> {
         if (appRoutes) {
             routes.push(...appRoutes);
         }
+
+        importPublic(routes);
     }
 
     const conflicts = checkForRouteConflicts(routes);

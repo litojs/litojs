@@ -3,9 +3,9 @@
 > [!Caution]
 > This project is still in development and is not ready for production use. It still very early in development and under heavy development.
 
-> Project Litojs maintained by **@indrazm**.
-
 It's an opinionated fullstack framework built on top of Bun.js inspired by laravel and django. The main goal of this project is to provide a pragmaticfullstack framework that is easy to use.
+
+Info: https://lito.indrazm.com/
 
 ### Features
 
@@ -36,6 +36,10 @@ It's an opinionated fullstack framework built on top of Bun.js inspired by larav
 -   [x] Request Cookies
 -   [x] Request Query
 -   [x] Cookie Setter
+-   [x] JSX Renderer
+-   [x] Redirection
+-   [-] Documentation
+-   [-] ORM
 -   [ ] Validation
 -   [ ] Middleware
 -   [ ] Authentication
@@ -43,6 +47,4 @@ It's an opinionated fullstack framework built on top of Bun.js inspired by larav
 -   [ ] File Uploads
 -   [ ] Email
 -   [ ] Websockets
--   [ ] ORM
 -   [ ] Project Test
--   [ ] Documentation
