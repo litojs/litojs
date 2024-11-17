@@ -24,3 +24,12 @@ export async function view<T extends (props: any) => any>(component: T, props: P
         },
     });
 }
+
+export async function redirect(url: string): Promise<Response> {
+    return new Response(null, {
+        status: 302,
+        headers: {
+            location: url,
+        },
+    });
+}
