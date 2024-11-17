@@ -16,7 +16,6 @@ export async function view<T extends (props: any) => any>(component: T, props: P
     const wrapper = await file.text();
     const html = component(props).toString();
     const finalWrapper = wrapper.replace("<body></body>", `<body>${html}</body>`);
-    console.log(finalWrapper);
 
     return new Response(finalWrapper, {
         headers: {
