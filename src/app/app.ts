@@ -11,7 +11,7 @@ import { Lito } from "./lito";
  * @param {Configuration} configuration - The configuration object containing the apps to be loaded.
  * - `apps` - An array of string, each is to register an app in apps folder.
  */
-export async function App(configuration: Configuration): Promise<void> {
+export async function App(configuration: Configuration): Promise<{ start: () => void; apps: string[] }> {
     const port = Number(process.env.PORT) || 8000;
     const routes: Route[] = [];
 
@@ -32,7 +32,12 @@ export async function App(configuration: Configuration): Promise<void> {
         Logger.warn(conflictMessage);
     }
 
-    return new Lito(configuration).use(routes).listen(port, () => {
-        Logger.success(`Server running on port: ${port}`);
-    });
+    return {
+        start() {
+            new Lito(configuration).use(routes).listen(port, () => {
+                Logger.success(`Server running on port: ${port}`);
+            });
+        },
+        apps: configuration.apps,
+    };
 }
