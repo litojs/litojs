@@ -1,5 +1,21 @@
 import type { Context } from "../../types/context";
 
+/**
+ *
+ *
+ * Creates a Response object based on the provided input and context.
+ *
+ * This function generates a suitable Response object based on the type of the
+ * input response. It handles cases for Response instances, objects (JSON), strings,
+ * and falls back for invalid types. It also supports setting cookies for the response.
+ *
+ * @param response - The data to be sent as a response. This can be a Response object,
+ *                   a string, or an object that will be serialized to JSON.
+ * @param context - The context providing the status and other relevant details for the response.
+ * @param setCookies - An array of cookies to be set in the response headers.
+ * @returns A Response object constructed based on the input data.
+ *
+ */
 export function createResponse(response: unknown, context: Context, setCookies: string[]): Response {
     const headers = new Headers();
 
@@ -27,7 +43,6 @@ export function createResponse(response: unknown, context: Context, setCookies: 
         headers.set("Set-Cookie", setCookies.join(", "));
     }
 
-    // Return the final response
     return new Response((response as Response).body, {
         status: context.status,
         headers,

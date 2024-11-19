@@ -9,7 +9,7 @@ await Promise.all([
         entryPoints: ["src/**/*.ts"],
         format: ["esm"],
         outDir: "dist",
-        minify: true,
+        minify: false,
         sourcemap: false,
         dts: true,
     }),

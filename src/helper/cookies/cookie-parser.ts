@@ -1,9 +1,22 @@
 import type { Cookie } from "../../types/cookie";
 
+/**
+ *
+ *
+ * Parses a cookie string into an object of cookies.
+ *
+ * This function takes a string containing cookies, splits it into individual
+ * cookies, and processes each cookie to extract its name, value, and attributes.
+ * It returns an object where each key is a cookie name and the value is a
+ * Cookie object containing the cookie details.
+ *
+ * @param cookieString - The string containing the cookies, typically retrieved from the "Cookie" header.
+ * @returns An object where keys are cookie names and values are Cookie objects.
+ *
+ */
 export function cookieParser(cookieString: string): Record<string, Cookie> {
     const cookies: Record<string, Cookie> = {};
 
-    // Split the cookie string by semicolon and trim whitespace
     cookieString.split(";").forEach((cookie) => {
         const parts = cookie.split(";").map((item) => item.trim());
         const [nameValue, ...attributes] = parts;
