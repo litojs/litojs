@@ -2,6 +2,11 @@ import type { Route, RouterConfig } from "../types";
 import type { Handler, Method } from "../types/handler";
 import { Controller, ControllerHandler } from "./controller";
 
+// Utility function to ensure a string starts with a leading slash
+const ensureLeadingSlash = (path: string): string => {
+    return path.startsWith("/") ? path : `/${path}`;
+};
+
 export class Router {
     private routes: Route[] = [];
     public controllerHandler: ControllerHandler;
@@ -10,7 +15,7 @@ export class Router {
     constructor(config?: RouterConfig) {
         this.controllerHandler = new ControllerHandler(this);
         if (config !== undefined && config.prefix !== undefined) {
-            this.prefix = config.prefix;
+            this.prefix = ensureLeadingSlash(config.prefix);
         } else {
             this.prefix = "";
         }
@@ -20,33 +25,33 @@ export class Router {
         return (path: string, handler: Handler) => {
             this.routes.push({
                 method,
-                path,
+                path: ensureLeadingSlash(path),
                 handler,
             });
         };
     }
 
-    public get(path: string, handler: Handler) {
+    public get(path: string, handler: Handler): void {
         return this.createRoute("GET")(path, handler);
     }
 
-    public post(path: string, handler: Handler) {
+    public post(path: string, handler: Handler): void {
         return this.createRoute("POST")(path, handler);
     }
 
-    public put(path: string, handler: Handler) {
+    public put(path: string, handler: Handler): void {
         return this.createRoute("PUT")(path, handler);
     }
 
-    public patch(path: string, handler: Handler) {
+    public patch(path: string, handler: Handler): void {
         return this.createRoute("PATCH")(path, handler);
     }
 
-    public delete(path: string, handler: Handler) {
+    public delete(path: string, handler: Handler): void {
         return this.createRoute("DELETE")(path, handler);
     }
 
-    public controller<T extends Controller>(ControllerClass: new () => T) {
+    public controller<T extends Controller>(ControllerClass: new () => T): ControllerHandler {
         return this.controllerHandler.handle(ControllerClass);
     }
 

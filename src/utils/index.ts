@@ -12,7 +12,6 @@ export async function view<T extends (props: any) => any>(component: T, props: P
         Logger.error(`Please create an index.html file in the root of your project`);
     }
 
-    // ! NEEDS TO BE FIXED
     const wrapper = await file.text();
     const html = component(props).toString();
     const finalWrapper = wrapper.replace("<body></body>", `<body>${html}</body>`);
@@ -29,6 +28,7 @@ export async function redirect(url: string): Promise<Response> {
         status: 302,
         headers: {
             location: url,
+            "HX-Location": url,
         },
     });
 }

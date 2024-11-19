@@ -1,4 +1,4 @@
-interface FormProps {
+interface FormProps extends JSX.HtmlFormTag {
     responseBehavior?: "insertLast" | "insertFirst" | "replace" | "default";
     method: "POST" | "PUT" | "DELETE" | "PATCH";
     target: string;

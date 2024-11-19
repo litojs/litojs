@@ -1,4 +1,4 @@
-interface LinkProps {
+interface LinkProps extends JSX.HtmlAnchorTag {
     children: JSX.Element;
     href: string;
 }
